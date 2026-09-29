@@ -3,229 +3,359 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radar do Café</title>
+  <title>Radar do Café - Mercado e Cotações</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg: #121212;
-      --card-bg: #1e1e1e;
-      --text: #ffffff;
-      --text-dim: #aaaaaa;
-      --accent: #8b5a2b;
-      --green: #4caf50;
-      --red: #f44336;
-      --border: #333333;
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --accent-color: #f59e0b;
+      --accent-hover: #d97706;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --green-up: #22c55e;
+      --red-down: #ef4444;
+      --neutral-gray: #64748b;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 20px;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      min-height: 100vh;
+      padding: 15px;
     }
 
-    .container {
-      max-width: 600px;
+    .app-container {
       width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
     header {
       text-align: center;
-      margin-bottom: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .title-container i {
+      color: var(--accent-color);
+      font-size: 1.6rem;
     }
 
     h1 {
-      margin: 0;
-      color: #e0a96d;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
 
     .subtitle {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      margin-top: 5px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
     }
 
     .card {
       background-color: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 15px;
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
 
     .card-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 5px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title i {
+      color: var(--accent-color);
+    }
+
+    .data-row {
       display: flex;
       justify-content: space-between;
+      align-items: baseline;
     }
 
-    .row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
+    .value-main {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
-    .val {
-      font-weight: bold;
-    }
-
-    .up { color: var(--green); }
-    .down { color: var(--red); }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: var(--accent);
-      color: white;
-      border: none;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
       border-radius: 6px;
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .badge.up { background-color: rgba(34, 197, 94, 0.15); color: var(--green-up); }
+    .badge.down { background-color: rgba(239, 68, 68, 0.15); color: var(--red-down); }
+    .badge.neutral { background-color: rgba(100, 116, 139, 0.15); color: var(--neutral-gray); }
+
+    .double-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .sub-data {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sub-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .sub-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .btn-update {
+      background-color: var(--accent-color);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s;
     }
 
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+    .btn-update:hover { background-color: var(--accent-hover); }
 
-    #status {
+    .status-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-top: 10px;
     }
 
-    #erro {
-      color: var(--red);
+    .error-msg {
+      background-color: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--red-down);
+      color: var(--red-down);
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
       text-align: center;
       display: none;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="app-container">
     <header>
-      <h1>☕ Radar do Café</h1>
+      <div class="title-container">
+        <i class="fa-solid fa-mug-hot"></i>
+        <h1>Radar do Café</h1>
+      </div>
       <div class="subtitle">Cotações do Mercado em Tempo Real</div>
     </header>
 
+    <div id="erro" class="error-msg">
+      ⚠️ Algumas cotações não puderam ser atualizadas neste momento.
+    </div>
+
     <!-- DÓLAR -->
     <div class="card">
-      <div class="card-title">💵 Dólar (USD/BRL)</div>
-      <div class="row">
-        <span>Valor:</span>
-        <span id="dolar-val" class="val">--</span>
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-dollar-sign"></i> DÓLAR COMERCIAL (USD/BRL)
+        </div>
       </div>
-      <div class="row">
-        <span>Variação:</span>
-        <span id="dolar-var" class="val">--</span>
+      <div class="data-row">
+        <div id="dolar-valor" class="value-main">--</div>
+        <div id="dolar-var" class="badge neutral">--</div>
       </div>
     </div>
 
     <!-- MERCADO FÍSICO (CCCV) -->
     <div class="card">
-      <div class="card-title">🌱 Mercado Físico (CCCV)</div>
-      <div class="row">
-        <span>Conilon (7/8):</span>
-        <span id="fisico-robusta" class="val">--</span>
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-seedling"></i> MERCADO FÍSICO (CCCV)
+        </div>
+        <div id="cccv-data" style="font-size: 0.75rem; color: var(--text-muted);">--</div>
       </div>
-      <div class="row">
-        <span>Arábica (Rio):</span>
-        <span id="fisico-arabica" class="val">--</span>
+      <div class="double-row">
+        <div class="sub-data">
+          <span class="sub-label">Conilon Tipo 7/8</span>
+          <span id="fisico-robusta" class="sub-value">--</span>
+        </div>
+        <div class="sub-data">
+          <span class="sub-label">Arábica Tipo 6 (Rio)</span>
+          <span id="fisico-arabica" class="sub-value">--</span>
+        </div>
       </div>
     </div>
 
     <!-- BOLSA LONDRES -->
     <div class="card">
-      <div class="card-title">🏛️ Bolsa de Londres (Robusta)</div>
-      <div class="row">
-        <span>Último:</span>
-        <span id="robusta-val" class="val">--</span>
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-chart-line"></i> LONDRES (ROBUSTA - RC.F)
+        </div>
       </div>
-      <div class="row">
-        <span>Variação:</span>
-        <span id="robusta-var" class="val">--</span>
+      <div class="data-row">
+        <div id="robusta-valor" class="value-main">--</div>
+        <div id="robusta-var" class="badge neutral">--</div>
       </div>
     </div>
 
     <!-- BOLSA NOVA YORK -->
     <div class="card">
-      <div class="card-title">🗽 Bolsa de Nova York (Arábica)</div>
-      <div class="row">
-        <span>Último:</span>
-        <span id="arabica-val" class="val">--</span>
+      <div class="card-header">
+        <div class="card-title">
+          <i class="fa-solid fa-building-columns"></i> NOVA YORK (ARÁBICA - KC.F)
+        </div>
       </div>
-      <div class="row">
-        <span>Variação:</span>
-        <span id="arabica-var" class="val">--</span>
+      <div class="data-row">
+        <div id="arabica-valor" class="value-main">--</div>
+        <div id="arabica-var" class="badge neutral">--</div>
       </div>
     </div>
 
-    <button id="btnAtualizar" onclick="atualizarTudo()">↻ ATUALIZAR COTAÇÕES</button>
-    <div id="status">Pressione o botão para carregar</div>
-    <div id="erro">⚠️ Erro ao buscar cotações. Tente novamente.</div>
+    <div class="controls">
+      <button id="btnAtualizar" class="btn-update" onclick="atualizarTudo()">
+        <i class="fa-solid fa-rotate"></i> ATUALIZAR COTAÇÕES
+      </button>
+      <div id="status" class="status-text">Pressione o botão para carregar</div>
+    </div>
   </div>
 
   <script>
-    const PROXY = "https://corsproxy.io/?";
+    // Função universal de busca com Fallback de proxies públicos
+    async function fetchComProxy(urlAlvo) {
+      const proxies = [
+        `https://corsproxy.io/?${encodeURIComponent(urlAlvo)}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(urlAlvo)}`
+      ];
 
+      for (const proxyUrl of proxies) {
+        try {
+          const controller = new AbortController();
+          const id = setTimeout(() => controller.abort(), 6000); // 6s timeout
+          const res = await fetch(proxyUrl, { signal: controller.signal });
+          clearTimeout(id);
+          if (res.ok) return await res.text();
+        } catch (e) {
+          console.warn(`Proxy falhou: ${proxyUrl}`, e);
+        }
+      }
+      throw new Error(`Não foi possível acessar: ${urlAlvo}`);
+    }
+
+    function formatarMoeda(valor, estilo = 'currency') {
+      if (isNaN(valor) || valor === null) return '--';
+      if (estilo === 'currency') {
+        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      }
+      return valor.toLocaleString('pt-BR');
+    }
+
+    function atualizarBadge(elementId, valorVar) {
+      const el = document.getElementById(elementId);
+      if (isNaN(valorVar) || valorVar === null) {
+        el.className = "badge neutral";
+        el.textContent = "--";
+        return;
+      }
+      const ehPositivo = valorVar >= 0;
+      el.className = `badge ${ehPositivo ? 'up' : 'down'}`;
+      el.innerHTML = `<i class="fa-solid fa-arrow-${ehPositivo ? 'up' : 'down'}"></i> ${ehPositivo ? '+' : ''}${valorVar.toFixed(2)}%`;
+    }
+
+    // 1. DÓLAR
     async function buscarDolar() {
       try {
-        const url = encodeURIComponent("https://economia.awesomeapi.com.br/json/last/USD-BRL");
-        const res = await fetch(PROXY + url);
-        const json = await res.json();
+        const texto = await fetchComProxy("https://economia.awesomeapi.com.br/json/last/USD-BRL");
+        const json = JSON.parse(texto);
         if (json.USDBRL) {
-          const val = parseFloat(json.USDBRL.bid).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-          const pct = parseFloat(json.USDBRL.pctChange);
-          document.getElementById('dolar-val').textContent = val;
-          document.getElementById('dolar-var').textContent = (pct >= 0 ? "+" : "") + pct.toFixed(2) + "%";
-          document.getElementById('dolar-var').className = "val " + (pct >= 0 ? "up" : "down");
+          document.getElementById('dolar-valor').textContent = formatarMoeda(parseFloat(json.USDBRL.bid));
+          atualizarBadge('dolar-var', parseFloat(json.USDBRL.pctChange));
+          return true;
         }
       } catch (e) {
         console.error("Erro Dólar:", e);
       }
+      return false;
     }
 
+    // 2. STOOQ (Bolsas)
     async function buscarStooq(simbolo, valId, varId) {
       try {
-        const target = `https://stooq.com/q/l/?s=${simbolo}&f=sd2t2ohlc&e=csv`;
-        const res = await fetch(PROXY + encodeURIComponent(target));
-        const txt = await res.text();
-        const linhas = txt.trim().split("\n");
+        const texto = await fetchComProxy(`https://stooq.com/q/l/?s=${simbolo}&f=sd2t2ohlc&e=csv`);
+        const linhas = texto.trim().split("\n");
         if (linhas.length >= 2) {
-          const cols = linhas[1].split(",");
-          const close = parseFloat(cols[7]);
-          const open = parseFloat(cols[4]);
+          const colunas = linhas[1].split(",");
+          const close = parseFloat(colunas[7]);
+          const open = parseFloat(colunas[4]);
           if (!isNaN(close) && close > 0) {
-            document.getElementById(valId).textContent = close.toLocaleString('pt-BR');
+            document.getElementById(valId).textContent = formatarMoeda(close, 'number');
             const openVal = (!isNaN(open) && open > 0) ? open : close;
-            const varPct = (((close - openVal) / openVal) * 100);
-            document.getElementById(varId).textContent = (varPct >= 0 ? "+" : "") + varPct.toFixed(2) + "%";
-            document.getElementById(varId).className = "val " + (varPct >= 0 ? "up" : "down");
+            const pct = (((close - openVal) / openVal) * 100);
+            atualizarBadge(varId, pct);
+            return true;
           }
         }
       } catch (e) {
         console.error(`Erro ${simbolo}:`, e);
       }
+      return false;
     }
 
+    // 3. CCCV (Físico)
     async function buscarCCCV() {
       try {
-        const target = "https://www.cccv.org.br/cotacao/";
-        const res = await fetch(PROXY + encodeURIComponent(target));
-        const html = await res.text();
+        const html = await fetchComProxy("https://www.cccv.org.br/cotacao/");
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
 
@@ -245,15 +375,13 @@
           }
         });
 
-        if (conilon) {
-          document.getElementById("fisico-robusta").textContent = conilon.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
-        if (rio) {
-          document.getElementById("fisico-arabica").textContent = rio.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        }
+        if (conilon) document.getElementById("fisico-robusta").textContent = formatarMoeda(conilon);
+        if (rio) document.getElementById("fisico-arabica").textContent = formatarMoeda(rio);
+        return (conilon || rio);
       } catch (e) {
         console.error("Erro CCCV:", e);
       }
+      return false;
     }
 
     async function atualizarTudo() {
@@ -262,28 +390,32 @@
       const erro = document.getElementById("erro");
 
       btn.disabled = true;
-      btn.textContent = "⏳ ATUALIZANDO...";
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ATUALIZANDO...`;
       erro.style.display = "none";
 
-      try {
-        await Promise.all([
-          buscarDolar(),
-          buscarStooq("rc.f", "robusta-val", "robusta-var"),
-          buscarStooq("kc.f", "arabica-val", "arabica-var"),
-          buscarCCCV()
-        ]);
+      const resultados = await Promise.all([
+        buscarDolar(),
+        buscarStooq("rc.f", "robusta-valor", "robusta-var"),
+        buscarStooq("kc.f", "arabica-valor", "arabica-var"),
+        buscarCCCV()
+      ]);
 
+      const algumSucesso = resultados.some(res => res === true);
+      const todosSucesso = resultados.every(res => res === true);
+
+      if (algumSucesso) {
         const agora = new Date();
         status.textContent = "✓ Atualizado em " + agora.toLocaleDateString("pt-BR") + " às " + agora.toLocaleTimeString("pt-BR");
-      } catch (e) {
-        erro.style.display = "block";
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "↻ ATUALIZAR COTAÇÕES";
       }
+
+      if (!todosSucesso) {
+        erro.style.display = "block";
+      }
+
+      btn.disabled = false;
+      btn.innerHTML = `<i class="fa-solid fa-rotate"></i> ATUALIZAR COTAÇÕES`;
     }
 
-    // Carrega automaticamente ao abrir a página
     window.onload = atualizarTudo;
   </script>
 </body>
