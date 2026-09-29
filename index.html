@@ -1,43 +1,3843 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#000000">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
-<link rel="apple-touch-icon" href="icon-192.png">
+
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0">
+
+<meta name="theme-color"
+      content="#000000">
+
+<meta name="mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="black">
+
+<link rel="manifest"
+      href="manifest.json">
+
 <title>RADAR DO CAFÉ</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;padding:8px;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}.container{width:100%;max-width:520px;margin:auto}.header{display:flex;justify-content:flex-start;align-items:flex-start;gap:9px;margin:1px 0 8px}.semente-cafe{width:30px;height:38px;border-radius:55% 45% 55% 45%;background:linear-gradient(145deg,#9a5a2e,#5a2d14);transform:rotate(-38deg);position:relative;flex-shrink:0;margin-top:1px;box-shadow:inset -2px -2px 3px rgba(0,0,0,.35),0 0 5px rgba(255,255,255,.08)}.semente-cafe::after{content:"";position:absolute;width:4px;height:27px;background:rgba(35,15,5,.65);border-radius:50%;left:13px;top:6px;transform:rotate(7deg)}.cabecalho-conteudo{display:flex;flex-direction:column;min-width:0;flex:1}.titulo{font-size:28px;font-weight:900;letter-spacing:.5px;line-height:1}.cabecalho-info{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;margin-top:4px}.cabecalho-descricao{font-size:10px;font-weight:700;color:#9da9a1}.conexao{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:900;padding:3px 6px;border-radius:6px;white-space:nowrap}.conexao-ponto{width:7px;height:7px;border-radius:50%;display:inline-block}.conexao.online{color:#52dc88;background:rgba(82,220,136,.10);border:1px solid rgba(82,220,136,.28)}.conexao.online .conexao-ponto{background:#52dc88;box-shadow:0 0 5px rgba(82,220,136,.65)}.conexao.offline{color:#ff6d6d;background:rgba(255,109,109,.10);border:1px solid rgba(255,109,109,.28)}.conexao.offline .conexao-ponto{background:#ff6d6d;box-shadow:0 0 5px rgba(255,109,109,.55)}.card{width:100%;border-radius:11px;padding:10px;margin-bottom:8px;border:1px solid rgba(255,255,255,.15)}.verde{background:linear-gradient(145deg,#087c32,#00a843)}.vermelho{background:linear-gradient(145deg,#8b1111,#d71919)}.neutro{background:#111}.dolar-titulo{font-size:14px;font-weight:900;margin-bottom:4px}.dolar-linha{display:flex;align-items:center;justify-content:space-between;gap:10px}.dolar-valor{font-size:29px;font-weight:900;line-height:1}.dolar-var{font-size:18px;font-weight:900;white-space:nowrap}.bolsa-titulo{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:15px;font-weight:900}.bolsa-titulo-esquerda{display:flex;align-items:center;gap:4px}.bolsa-titulo .bandeira{font-size:18px}.bolsa-var{font-size:17px;font-weight:900;white-space:nowrap}.cotacao-centro{text-align:center;margin-top:8px}.cotacao{display:flex;align-items:center;justify-content:center}.cotacao-valor{font-size:28px;line-height:1;font-weight:900;white-space:nowrap}.contrato{text-align:center;font-size:12px;font-weight:700;margin-top:4px;opacity:.9}.precos-area{display:grid;grid-template-columns:39% 61%;gap:7px;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.16);align-items:stretch}.bolsa-convertida{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;padding-left:0;width:100%}.bolsa-convertida-valor{font-size:21px;line-height:1;font-weight:900;white-space:nowrap;letter-spacing:-.4px;text-align:center;width:100%}.bolsa-convertida-desc{font-size:10px;font-weight:700;margin-top:5px;line-height:1.2;opacity:.9;text-align:center;width:100%}.bolsa-convertida-desc-linha{font-size:10px;font-weight:700;line-height:1.2;opacity:.9;text-align:center;width:100%}.bolsa-convertida-desc-linha+.bolsa-convertida-desc-linha{margin-top:2px}.preco-brasil{text-align:center;min-width:0;width:100%;padding:7px 4px 8px;border:1px solid rgba(255,212,0,.65);border-radius:8px;background:rgba(0,0,0,.12);transition:background .25s ease,border-color .25s ease;display:flex;flex-direction:column;align-items:center;justify-content:center}.preco-brasil.alta{background:rgba(0,150,55,.24);border-color:rgba(70,255,125,.75)}.preco-brasil.baixa{background:rgba(170,0,0,.24);border-color:rgba(255,90,90,.75)}.preco-brasil.estavel{background:rgba(0,0,0,.12);border-color:rgba(255,212,0,.65)}.preco-brasil-desc{color:#ffd400;font-size:10px;font-weight:900;text-transform:uppercase;line-height:1.15;margin-bottom:3px;white-space:nowrap}.preco-brasil-tipo{font-size:12px;font-weight:800;margin-bottom:3px;opacity:.95}.preco-brasil-valor{font-size:30px;line-height:1;font-weight:900;white-space:nowrap;letter-spacing:-.8px;width:auto;max-width:100%;transform:none}.fisico{margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.16);text-align:left}.fisico-titulo{color:#ffd400;font-size:12px;font-weight:900;text-transform:uppercase;line-height:1.1;text-align:left}.fisico-fonte{display:flex;align-items:baseline;justify-content:flex-start;gap:4px;margin-top:5px;white-space:nowrap;overflow:hidden}.fisico-quem{font-size:10px;font-weight:700;text-transform:uppercase;opacity:.9}.fisico-separador{font-size:10px;font-weight:700;opacity:.9}.fisico-data{color:#fff;font-size:10px;font-weight:700;white-space:nowrap;opacity:.9}.fisico-produto{display:flex;align-items:baseline;justify-content:flex-start;gap:4px;margin-top:4px}.fisico-tipo{font-size:13px;font-weight:800}.fisico-valor{font-size:18px;line-height:1;font-weight:900;white-space:nowrap}.cot-titulo{font-size:13px;font-weight:900;margin-bottom:3px}.cot-data{font-size:10px;font-weight:700;opacity:.8;margin-bottom:7px}.cot-cabecalho,.cot-linha{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;column-gap:5px}.cot-cabecalho{margin-bottom:2px}.cot-cabecalho div{font-size:11px;font-weight:900;text-align:center}.cot-cabecalho div:first-child{text-align:left}.cot-linha{padding:5px 0;border-bottom:1px solid rgba(255,255,255,.1)}.cot-linha:last-child{border-bottom:0}.cot-nome{font-size:12px;font-weight:900;white-space:nowrap}.cot-valor{font-size:15px;font-weight:900;text-align:center;white-space:nowrap}.cot-comprado{color:#39e875}.cot-vendido{color:#ff5757}.cot-saldo{color:#fff}.status{text-align:center;font-size:9px;color:#999;margin:6px 0 1px}.erro{display:none;color:#ff5555;font-size:10px;text-align:center}@media(max-width:380px){.cotacao-valor{font-size:26px}.precos-area{grid-template-columns:37% 63%;gap:6px}.bolsa-convertida-valor{font-size:19px}.bolsa-convertida-desc-linha{font-size:9px}.preco-brasil{padding-left:2px;padding-right:2px}.preco-brasil-desc{font-size:9px}.preco-brasil-tipo{font-size:11px}.preco-brasil-valor{font-size:27px;letter-spacing:-.8px}.fisico-valor{font-size:17px}}
-</style></head><body><div class="container">
-<div class="header"><div class="semente-cafe"></div><div class="cabecalho-conteudo"><div class="titulo">RADAR DO CAFÉ</div><div class="cabecalho-info"><span class="cabecalho-descricao">Mercado • Cotação • Café</span><span id="statusConexao" class="conexao online"><span class="conexao-ponto"></span>ONLINE</span></div></div></div>
-<div id="cardDolar" class="card verde"><div class="dolar-titulo">💵 DÓLAR</div><div class="dolar-linha"><div id="dolarValor" class="dolar-valor">R$ 5,1811</div><div id="dolarVar" class="dolar-var">▼ -0,23%</div></div></div>
-<div id="cardRobusta" class="card verde"><div class="bolsa-titulo"><div class="bolsa-titulo-esquerda"><span class="bandeira">🇬🇧</span><span>LONDRES / ROBUSTA</span></div><div id="robustaVar" class="bolsa-var">▲ 2,38%</div></div><div class="cotacao-centro"><div class="cotacao"><div id="robustaValor" class="cotacao-valor">US$ 3.362</div></div><div id="robustaContrato" class="contrato">NOV 2026</div></div><div class="precos-area"><div class="bolsa-convertida"><div id="robustaConvertido" class="bolsa-convertida-valor">R$ 1.044,00</div><div class="bolsa-convertida-desc-linha">Cotação na bolsa</div><div class="bolsa-convertida-desc-linha">Saca de 60 kg</div></div><div id="boxRobusta" class="preco-brasil estavel"><div class="preco-brasil-desc">Físico estimado no Brasil</div><div class="preco-brasil-tipo">Conilon 7/8</div><div id="precoBrasilRobusta" class="preco-brasil-valor">R$ 908,00</div></div></div><div class="fisico"><div class="fisico-titulo">PREÇO PAGO NO BRASIL</div><div class="fisico-fonte"><div class="fisico-quem">CENTRO DO COMÉRCIO DE CAFÉ DE VITÓRIA</div><div class="fisico-separador">-</div><div id="dataFisicoRobusta" class="fisico-data">25/09/2026</div></div><div class="fisico-produto"><div class="fisico-tipo">Conilon 7/8</div><div id="fisicoRobusta" class="fisico-valor">R$ 908,00</div></div></div></div>
-<div id="cardArabica" class="card verde"><div class="bolsa-titulo"><div class="bolsa-titulo-esquerda"><span class="bandeira">🇺🇸</span><span>NOVA YORK / ARÁBICA</span></div><div id="arabicaVar" class="bolsa-var">▲ 1,00%</div></div><div class="cotacao-centro"><div class="cotacao"><div id="arabicaValor" class="cotacao-valor">278,10</div></div><div id="arabicaContrato" class="contrato">DEZ 2026</div></div><div class="precos-area"><div class="bolsa-convertida"><div id="arabicaConvertido" class="bolsa-convertida-valor">R$ 1.873,00</div><div class="bolsa-convertida-desc-linha">Cotação na bolsa</div><div class="bolsa-convertida-desc-linha">Saca de 60 kg</div></div><div id="boxArabica" class="preco-brasil estavel"><div class="preco-brasil-desc">Físico estimado no Brasil</div><div class="preco-brasil-tipo">Bebida Rio</div><div id="precoBrasilArabica" class="preco-brasil-valor">R$ 1.105,00</div></div></div><div class="fisico"><div class="fisico-titulo">PREÇO PAGO NO BRASIL</div><div class="fisico-fonte"><div class="fisico-quem">CENTRO DO COMÉRCIO DE CAFÉ DE VITÓRIA</div><div class="fisico-separador">-</div><div id="dataFisicoArabica" class="fisico-data">25/09/2026</div></div><div class="fisico-produto"><div class="fisico-tipo">Bebida Rio</div><div id="fisicoArabica" class="fisico-valor">R$ 1.105,00</div></div></div></div>
-<div class="card neutro"><div class="cot-titulo">📊 POSIÇÃO DOS FUNDOS — COT</div><div class="cot-data">Última informação: 22/09/2026</div><div class="cot-cabecalho"><div></div><div>🇬🇧 ROBUSTA</div><div>🇺🇸 ARÁBICA</div></div><div class="cot-linha"><div class="cot-nome cot-comprado">🟢 Comprados</div><div id="cotRobustaComprados" class="cot-valor">33.136</div><div id="cotArabicaComprados" class="cot-valor">41.880</div></div><div class="cot-linha"><div class="cot-nome cot-vendido">🔴 Vendidos</div><div id="cotRobustaVendidos" class="cot-valor">17.330</div><div id="cotArabicaVendidos" class="cot-valor">31.607</div></div><div class="cot-linha"><div class="cot-nome">⚖️ Saldo</div><div id="cotRobustaSaldo" class="cot-valor cot-saldo">+15.806</div><div id="cotArabicaSaldo" class="cot-valor cot-saldo">+10.273</div></div></div>
-<div id="erro" class="erro">Não foi possível atualizar alguma cotação.</div><div id="status" class="status">Atualizando...</div></div>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  padding:8px;
+  background:#000;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+.container{
+  width:100%;
+  max-width:520px;
+  margin:auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.header{
+  display:flex;
+  justify-content:flex-start;
+  align-items:flex-start;
+  gap:9px;
+  margin:1px 0 8px;
+}
+
+.semente-cafe{
+  width:30px;
+  height:38px;
+  border-radius:55% 45% 55% 45%;
+  background:linear-gradient(145deg,#9a5a2e,#5a2d14);
+  transform:rotate(-38deg);
+  position:relative;
+  flex-shrink:0;
+  margin-top:1px;
+  box-shadow:
+    inset -2px -2px 3px rgba(0,0,0,.35),
+    0 0 5px rgba(255,255,255,.08);
+}
+
+.semente-cafe::after{
+  content:"";
+  position:absolute;
+  width:4px;
+  height:27px;
+  background:rgba(35,15,5,.65);
+  border-radius:50%;
+  left:13px;
+  top:6px;
+  transform:rotate(7deg);
+}
+
+.cabecalho-conteudo{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  flex:1;
+}
+
+
+/* =========================================================
+   TÍTULO + SUBTÍTULO + AÇÕES
+========================================================= */
+
+.titulo-linha{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:8px;
+  width:100%;
+}
+
+.titulo-esquerda{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.titulo{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:.5px;
+  line-height:1;
+}
+
+.cabecalho-info{
+  width:100%;
+  margin-top:1px;
+}
+
+.cabecalho-descricao{
+  font-size:10px;
+  font-weight:700;
+  color:#9da9a1;
+  line-height:1.1;
+}
+
+
+/* =========================================================
+   ONLINE + ATUALIZAR
+========================================================= */
+
+.cabecalho-acoes{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:4px;
+  flex-shrink:0;
+  margin-top:-2px;
+}
+
+.conexao{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  font-size:9px;
+  font-weight:900;
+  padding:3px 6px;
+  border-radius:6px;
+  white-space:nowrap;
+}
+
+.conexao-ponto{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.conexao.online{
+  color:#52dc88;
+  background:rgba(82,220,136,.10);
+  border:1px solid rgba(82,220,136,.28);
+}
+
+.conexao.online .conexao-ponto{
+  background:#52dc88;
+  box-shadow:0 0 5px rgba(82,220,136,.65);
+}
+
+.conexao.offline{
+  color:#ff6d6d;
+  background:rgba(255,109,109,.10);
+  border:1px solid rgba(255,109,109,.28);
+}
+
+.conexao.offline .conexao-ponto{
+  background:#ff6d6d;
+  box-shadow:0 0 5px rgba(255,109,109,.55);
+}
+
+.btn-atualizar{
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:7px;
+  background:#fff;
+  color:#000;
+  padding:5px 10px;
+  font-size:10px;
+  font-weight:900;
+  cursor:pointer;
+  white-space:nowrap;
+  line-height:1.2;
+  box-shadow:0 2px 7px rgba(255,255,255,.18);
+}
+
+.btn-atualizar:active{
+  transform:scale(.96);
+}
+
+.btn-atualizar.carregando{
+  opacity:.6;
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card{
+  width:100%;
+  border-radius:11px;
+  padding:10px;
+  margin-bottom:8px;
+  border:1px solid rgba(255,255,255,.15);
+}
+
+.verde{
+  background:linear-gradient(145deg,#087c32,#00a843);
+}
+
+.vermelho{
+  background:linear-gradient(145deg,#8b1111,#d71919);
+}
+
+.neutro{
+  background:#111;
+}
+
+
+/* =========================================================
+   DÓLAR
+========================================================= */
+
+.dolar-titulo{
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:4px;
+}
+
+.dolar-linha{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.dolar-valor{
+  font-size:29px;
+  font-weight:900;
+  line-height:1;
+}
+
+.dolar-var{
+  font-size:18px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+
+/* =========================================================
+   TÍTULO BOLSA
+========================================================= */
+
+.bolsa-titulo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  font-size:15px;
+  font-weight:900;
+}
+
+.bolsa-titulo-esquerda{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.bolsa-titulo .bandeira{
+  font-size:18px;
+}
+
+.bolsa-var{
+  font-size:17px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+
+/* =========================================================
+   COTAÇÃO
+========================================================= */
+
+.cotacao-centro{
+  text-align:center;
+  margin-top:8px;
+}
+
+.cotacao{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cotacao-valor{
+  font-size:28px;
+  line-height:1;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.contrato{
+  text-align:center;
+  font-size:12px;
+  font-weight:700;
+  margin-top:4px;
+  opacity:.9;
+}
+
+
+/* =========================================================
+   ÁREA DOS PREÇOS
+========================================================= */
+
+.precos-area{
+  display:grid;
+  grid-template-columns:39% 61%;
+  gap:7px;
+  margin-top:10px;
+  padding-top:8px;
+  border-top:1px solid rgba(255,255,255,.16);
+  align-items:stretch;
+}
+
+
+/* =========================================================
+   COTAÇÃO DA BOLSA
+========================================================= */
+
+.bolsa-convertida{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-width:0;
+  padding-left:0;
+  width:100%;
+}
+
+.bolsa-convertida-valor{
+  font-size:21px;
+  line-height:1;
+  font-weight:900;
+  white-space:nowrap;
+  letter-spacing:-.4px;
+  text-align:center;
+  width:100%;
+}
+
+.bolsa-convertida-desc{
+  font-size:10px;
+  font-weight:700;
+  margin-top:5px;
+  line-height:1.2;
+  opacity:.9;
+  text-align:center;
+  width:100%;
+}
+
+.bolsa-convertida-desc-linha{
+  font-size:10px;
+  font-weight:700;
+  line-height:1.2;
+  opacity:.9;
+  text-align:center;
+  width:100%;
+}
+
+.bolsa-convertida-desc-linha + .bolsa-convertida-desc-linha{
+  margin-top:2px;
+}
+
+
+/* =========================================================
+   FÍSICO ESTIMADO
+========================================================= */
+
+.preco-brasil{
+  text-align:center;
+  min-width:0;
+  width:100%;
+  padding:7px 4px 8px;
+  border:1px solid rgba(255,212,0,.65);
+  border-radius:8px;
+  background:rgba(0,0,0,.12);
+  transition:
+    background .25s ease,
+    border-color .25s ease;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.preco-brasil.alta{
+  background:rgba(0,150,55,.24);
+  border-color:rgba(70,255,125,.75);
+}
+
+.preco-brasil.baixa{
+  background:rgba(170,0,0,.24);
+  border-color:rgba(255,90,90,.75);
+}
+
+.preco-brasil.estavel{
+  background:rgba(0,0,0,.12);
+  border-color:rgba(255,212,0,.65);
+}
+
+.preco-brasil-desc{
+  color:#ffd400;
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:1.15;
+  margin-bottom:3px;
+  white-space:nowrap;
+}
+
+.preco-brasil-tipo{
+  font-size:30px;
+  line-height:1;
+  font-weight:900;
+  margin-bottom:5px;
+  opacity:.98;
+}
+
+.preco-brasil-valor{
+  font-size:30px;
+  line-height:1;
+  font-weight:900;
+  white-space:nowrap;
+  letter-spacing:-.8px;
+  width:auto;
+  max-width:100%;
+  transform:none;
+}
+
+
+/* =========================================================
+   PREÇO PAGO NO BRASIL
+========================================================= */
+
+.fisico{
+  margin-top:9px;
+  padding-top:8px;
+  border-top:1px solid rgba(255,255,255,.16);
+  text-align:left;
+}
+
+.fisico-titulo{
+  color:#ffd400;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:1.1;
+  text-align:left;
+}
+
+.fisico-fonte{
+  display:flex;
+  align-items:baseline;
+  justify-content:flex-start;
+  gap:4px;
+  margin-top:5px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+.fisico-quem{
+  font-size:10px;
+  font-weight:700;
+  text-transform:uppercase;
+  opacity:.9;
+}
+
+.fisico-separador{
+  font-size:10px;
+  font-weight:700;
+  opacity:.9;
+}
+
+.fisico-data{
+  color:#fff;
+  font-size:10px;
+  font-weight:700;
+  white-space:nowrap;
+  opacity:.9;
+}
+
+
+/* =========================================================
+   TIPO + VALOR
+========================================================= */
+
+.fisico-produto{
+  display:flex;
+  align-items:baseline;
+  justify-content:flex-start;
+  gap:5px;
+  margin-top:4px;
+  color:#fff;
+}
+
+.fisico-tipo,
+.fisico-produto-separador,
+.fisico-valor{
+  font-size:18px;
+  line-height:1;
+  font-weight:900;
+  color:#fff;
+  white-space:nowrap;
+}
+
+.fisico-produto .indisponivel{
+  font-size:18px !important;
+  color:#fff !important;
+  font-weight:900 !important;
+}
+
+
+/* =========================================================
+   INDISPONÍVEL
+========================================================= */
+
+.indisponivel{
+  font-size:17px !important;
+  color:#ff7777;
+  font-weight:900;
+}
+
+
+/* =========================================================
+   COT
+========================================================= */
+
+.cot-titulo{
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:3px;
+}
+
+.cot-data{
+  font-size:10px;
+  font-weight:700;
+  opacity:.8;
+  margin-bottom:7px;
+}
+
+.cot-cabecalho,
+.cot-linha{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  align-items:center;
+  column-gap:5px;
+}
+
+.cot-cabecalho{
+  margin-bottom:2px;
+}
+
+.cot-cabecalho div{
+  font-size:11px;
+  font-weight:900;
+  text-align:center;
+}
+
+.cot-cabecalho div:first-child{
+  text-align:left;
+}
+
+.cot-linha{
+  padding:5px 0;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.cot-linha:last-child{
+  border-bottom:0;
+}
+
+.cot-nome{
+  font-size:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.cot-valor{
+  font-size:15px;
+  font-weight:900;
+  text-align:center;
+  white-space:nowrap;
+}
+
+.cot-comprado{
+  color:#39e875;
+}
+
+.cot-vendido{
+  color:#ff5757;
+}
+
+.cot-saldo{
+  color:#fff;
+}
+
+
+/* =========================================================
+   STATUS FINAL
+========================================================= */
+
+.status{
+  text-align:center;
+  font-size:10px;
+  color:#aaa;
+  margin:10px 0 2px;
+  padding-top:7px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+
+.erro{
+  display:none;
+  color:#ff5555;
+  font-size:10px;
+  text-align:center;
+}
+
+
+/* =========================================================
+   TELAS MENORES
+========================================================= */
+
+@media(max-width:380px){
+
+  .cotacao-valor{
+    font-size:26px;
+  }
+
+  .precos-area{
+    grid-template-columns:37% 63%;
+    gap:6px;
+  }
+
+  .bolsa-convertida-valor{
+    font-size:19px;
+  }
+
+  .bolsa-convertida-desc-linha{
+    font-size:9px;
+  }
+
+  .preco-brasil{
+    padding-left:2px;
+    padding-right:2px;
+  }
+
+  .preco-brasil-desc{
+    font-size:9px;
+  }
+
+  .preco-brasil-tipo{
+    font-size:25px;
+  }
+
+  .preco-brasil-valor{
+    font-size:27px;
+    letter-spacing:-.8px;
+  }
+
+  .fisico-valor{
+    font-size:17px;
+  }
+
+  .btn-atualizar{
+    font-size:9px;
+    padding:4px 7px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<div class="header">
+
+  <div class="semente-cafe"></div>
+
+  <div class="cabecalho-conteudo">
+
+    <div class="titulo-linha">
+
+      <div class="titulo-esquerda">
+
+        <div class="titulo">
+          RADAR DO CAFÉ
+        </div>
+
+        <div class="cabecalho-info">
+
+          <span class="cabecalho-descricao">
+            Mercado • Cotação • Café
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="cabecalho-acoes">
+
+        <span id="statusConexao"
+              class="conexao online">
+
+          <span class="conexao-ponto"></span>
+          ONLINE
+
+        </span>
+
+        <button id="btnAtualizar"
+                class="btn-atualizar"
+                onclick="atualizarManual()">
+
+          ↻ ATUALIZAR
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     DÓLAR
+===================================================== -->
+
+<div id="cardDolar"
+     class="card verde">
+
+  <div class="dolar-titulo">
+    💵 DÓLAR
+  </div>
+
+  <div class="dolar-linha">
+
+    <div id="dolarValor"
+         class="dolar-valor">
+
+      INDISPONÍVEL
+
+    </div>
+
+    <div id="dolarVar"
+         class="dolar-var">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     ROBUSTA
+===================================================== -->
+
+<div id="cardRobusta"
+     class="card verde">
+
+  <div class="bolsa-titulo">
+
+    <div class="bolsa-titulo-esquerda">
+
+      <span class="bandeira">
+        🇬🇧
+      </span>
+
+      <span>
+        LONDRES / ROBUSTA
+      </span>
+
+    </div>
+
+    <div id="robustaVar"
+         class="bolsa-var">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+
+  <div class="cotacao-centro">
+
+    <div class="cotacao">
+
+      <div id="robustaValor"
+           class="cotacao-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+    <div id="robustaContrato"
+         class="contrato">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+
+  <div class="precos-area">
+
+    <div class="bolsa-convertida">
+
+      <div id="robustaConvertido"
+           class="bolsa-convertida-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+      <div class="bolsa-convertida-desc-linha">
+        Cotação na bolsa
+      </div>
+
+      <div class="bolsa-convertida-desc-linha">
+        Saca de 60 kg
+      </div>
+
+    </div>
+
+
+    <div id="boxRobusta"
+         class="preco-brasil estavel">
+
+      <div class="preco-brasil-desc">
+        Físico estimado no Brasil
+      </div>
+
+      <div class="preco-brasil-tipo">
+        Conilon 7/8
+      </div>
+
+      <div id="precoBrasilRobusta"
+           class="preco-brasil-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="fisico">
+
+    <div class="fisico-titulo">
+      PREÇO PAGO NO BRASIL
+    </div>
+
+    <div class="fisico-fonte">
+
+      <div class="fisico-quem">
+        CENTRO DO COMÉRCIO DE CAFÉ DE VITÓRIA
+      </div>
+
+      <div class="fisico-separador">
+        -
+      </div>
+
+      <div id="dataFisicoRobusta"
+           class="fisico-data">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+    <div class="fisico-produto">
+
+      <div class="fisico-tipo">
+        Conilon 7/8
+      </div>
+
+      <div class="fisico-produto-separador">
+        :
+      </div>
+
+      <div id="fisicoRobusta"
+           class="fisico-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     ARÁBICA
+===================================================== -->
+
+<div id="cardArabica"
+     class="card verde">
+
+  <div class="bolsa-titulo">
+
+    <div class="bolsa-titulo-esquerda">
+
+      <span class="bandeira">
+        🇺🇸
+      </span>
+
+      <span>
+        NOVA YORK / ARÁBICA
+      </span>
+
+    </div>
+
+    <div id="arabicaVar"
+         class="bolsa-var">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+
+  <div class="cotacao-centro">
+
+    <div class="cotacao">
+
+      <div id="arabicaValor"
+           class="cotacao-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+    <div id="arabicaContrato"
+         class="contrato">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+
+  <div class="precos-area">
+
+    <div class="bolsa-convertida">
+
+      <div id="arabicaConvertido"
+           class="bolsa-convertida-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+      <div class="bolsa-convertida-desc-linha">
+        Cotação na bolsa
+      </div>
+
+      <div class="bolsa-convertida-desc-linha">
+        Saca de 60 kg
+      </div>
+
+    </div>
+
+
+    <div id="boxArabica"
+         class="preco-brasil estavel">
+
+      <div class="preco-brasil-desc">
+        Físico estimado no Brasil
+      </div>
+
+      <div class="preco-brasil-tipo">
+        Bebida Rio
+      </div>
+
+      <div id="precoBrasilArabica"
+           class="preco-brasil-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="fisico">
+
+    <div class="fisico-titulo">
+      PREÇO PAGO NO BRASIL
+    </div>
+
+    <div class="fisico-fonte">
+
+      <div class="fisico-quem">
+        CENTRO DO COMÉRCIO DE CAFÉ DE VITÓRIA
+      </div>
+
+      <div class="fisico-separador">
+        -
+      </div>
+
+      <div id="dataFisicoArabica"
+           class="fisico-data">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+    <div class="fisico-produto">
+
+      <div class="fisico-tipo">
+        Bebida Rio
+      </div>
+
+      <div class="fisico-produto-separador">
+        :
+      </div>
+
+      <div id="fisicoArabica"
+           class="fisico-valor">
+
+        INDISPONÍVEL
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =====================================================
+     COT
+===================================================== -->
+
+<div class="card neutro">
+
+  <div class="cot-titulo">
+    📊 POSIÇÃO DOS FUNDOS — COT
+  </div>
+
+  <div id="cotData"
+       class="cot-data">
+
+    Última informação: INDISPONÍVEL
+
+  </div>
+
+  <div class="cot-cabecalho">
+
+    <div></div>
+
+    <div>
+      🇬🇧 ROBUSTA
+    </div>
+
+    <div>
+      🇺🇸 ARÁBICA
+    </div>
+
+  </div>
+
+  <div class="cot-linha">
+
+    <div class="cot-nome cot-comprado">
+      🟢 Comprados
+    </div>
+
+    <div id="cotRobustaComprados"
+         class="cot-valor">
+
+      INDISPONÍVEL
+
+    </div>
+
+    <div id="cotArabicaComprados"
+         class="cot-valor">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+  <div class="cot-linha">
+
+    <div class="cot-nome cot-vendido">
+      🔴 Vendidos
+    </div>
+
+    <div id="cotRobustaVendidos"
+         class="cot-valor">
+
+      INDISPONÍVEL
+
+    </div>
+
+    <div id="cotArabicaVendidos"
+         class="cot-valor">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+  <div class="cot-linha">
+
+    <div class="cot-nome">
+      ⚖️ Saldo
+    </div>
+
+    <div id="cotRobustaSaldo"
+         class="cot-valor cot-saldo">
+
+      INDISPONÍVEL
+
+    </div>
+
+    <div id="cotArabicaSaldo"
+         class="cot-valor cot-saldo">
+
+      INDISPONÍVEL
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="erro"
+     class="erro">
+
+  Não foi possível atualizar alguma cotação.
+
+</div>
+
+
+<div id="status"
+     class="status">
+
+  Aguardando atualização...
+
+</div>
+
+</div>
+
+
 <script>
-function atualizarStatusConexao(online){const el=document.getElementById("statusConexao");if(!el)return;if(online){el.className="conexao online";el.innerHTML='<span class="conexao-ponto"></span> ONLINE';}else{el.className="conexao offline";el.innerHTML='<span class="conexao-ponto"></span> OFFLINE';}}
-let dados={dolar:{valor:5.1811,variacao:-0.23},robusta:{valor:3362,variacao:2.38,contrato:"NOV 2026"},arabica:{valor:278.10,variacao:1.00,contrato:"DEZ 2026"},fisico:{robusta:908,arabica:1105,data:"25/09/2026"},cot:{data:"22/09/2026",robusta:{comprados:33136,vendidos:17330},arabica:{comprados:41880,vendidos:31607}}};
-const referenciaMercado={robusta:{bolsa:3362,dolar:5.1811},arabica:{bolsa:278.10,dolar:5.1811}};let ultimoEstimado={robusta:null,arabica:null};
-function numeroBR(valor,casas=2){return Number(valor).toLocaleString("pt-BR",{minimumFractionDigits:casas,maximumFractionDigits:casas});}function percentual(valor){const n=Number(valor);if(isNaN(n))return "--";return (n>=0?"▲ ":"▼ ")+numeroBR(Math.abs(n),2)+"%";}function aplicarCor(id,variacao){const card=document.getElementById(id);if(!card)return;card.classList.remove("verde","vermelho");if(Number(variacao)>=0)card.classList.add("verde");else card.classList.add("vermelho");}function aplicarCorEstimado(id,tendencia){const box=document.getElementById(id);if(!box)return;box.classList.remove("alta","baixa","estavel");if(tendencia>0)box.classList.add("alta");else if(tendencia<0)box.classList.add("baixa");else box.classList.add("estavel");}
-function atualizarDolar(){document.getElementById("dolarValor").textContent="R$ "+numeroBR(dados.dolar.valor,4);document.getElementById("dolarVar").textContent=percentual(dados.dolar.variacao);aplicarCor("cardDolar",dados.dolar.variacao);}
-function calcularRobusta(){const usSaca=Number(dados.robusta.valor)/16.6666667;const reais=usSaca*Number(dados.dolar.valor);const refUsSaca=Number(referenciaMercado.robusta.bolsa)/16.6666667;const refReais=refUsSaca*Number(referenciaMercado.robusta.dolar);const basis=Number(dados.fisico.robusta)-refReais;return reais+basis;}
-function atualizarRobusta(){document.getElementById("robustaValor").textContent="US$ "+numeroBR(dados.robusta.valor,0);document.getElementById("robustaVar").textContent=percentual(dados.robusta.variacao);document.getElementById("robustaContrato").textContent=dados.robusta.contrato;aplicarCor("cardRobusta",dados.robusta.variacao);const usSaca=Number(dados.robusta.valor)/16.6666667;const reais=usSaca*Number(dados.dolar.valor);document.getElementById("robustaConvertido").textContent="R$ "+numeroBR(reais,2);const preco=calcularRobusta();document.getElementById("precoBrasilRobusta").textContent="R$ "+numeroBR(preco,2);let tendencia=0;if(ultimoEstimado.robusta!==null){if(preco>ultimoEstimado.robusta)tendencia=1;else if(preco<ultimoEstimado.robusta)tendencia=-1;}else{tendencia=Number(dados.robusta.variacao)>=0?1:-1;}aplicarCorEstimado("boxRobusta",tendencia);ultimoEstimado.robusta=preco;}
-function calcularArabica(){const usSaca=(Number(dados.arabica.valor)/100)*132.277357;const reais=usSaca*Number(dados.dolar.valor);const refUsSaca=(Number(referenciaMercado.arabica.bolsa)/100)*132.277357;const refReais=refUsSaca*Number(referenciaMercado.arabica.dolar);const basis=Number(dados.fisico.arabica)-refReais;return reais+basis;}
-function atualizarArabica(){document.getElementById("arabicaValor").textContent=numeroBR(dados.arabica.valor,2);document.getElementById("arabicaVar").textContent=percentual(dados.arabica.variacao);document.getElementById("arabicaContrato").textContent=dados.arabica.contrato;aplicarCor("cardArabica",dados.arabica.variacao);const usSaca=(Number(dados.arabica.valor)/100)*132.277357;const reais=usSaca*Number(dados.dolar.valor);document.getElementById("arabicaConvertido").textContent="R$ "+numeroBR(reais,2);const preco=calcularArabica();document.getElementById("precoBrasilArabica").textContent="R$ "+numeroBR(preco,2);let tendencia=0;if(ultimoEstimado.arabica!==null){if(preco>ultimoEstimado.arabica)tendencia=1;else if(preco<ultimoEstimado.arabica)tendencia=-1;}else{tendencia=Number(dados.arabica.variacao)>=0?1:-1;}aplicarCorEstimado("boxArabica",tendencia);ultimoEstimado.arabica=preco;}
-function atualizarFisico(){document.getElementById("fisicoRobusta").textContent="R$ "+numeroBR(dados.fisico.robusta,2);document.getElementById("fisicoArabica").textContent="R$ "+numeroBR(dados.fisico.arabica,2);document.getElementById("dataFisicoRobusta").textContent=dados.fisico.data;document.getElementById("dataFisicoArabica").textContent=dados.fisico.data;}
-function atualizarCOT(){const cot=dados.cot;const robustaSaldo=cot.robusta.comprados-cot.robusta.vendidos;const arabicaSaldo=cot.arabica.comprados-cot.arabica.vendidos;document.getElementById("cotRobustaComprados").textContent=numeroBR(cot.robusta.comprados,0);document.getElementById("cotRobustaVendidos").textContent=numeroBR(cot.robusta.vendidos,0);document.getElementById("cotRobustaSaldo").textContent=(robustaSaldo>=0?"+":"")+numeroBR(robustaSaldo,0);document.getElementById("cotArabicaComprados").textContent=numeroBR(cot.arabica.comprados,0);document.getElementById("cotArabicaVendidos").textContent=numeroBR(cot.arabica.vendidos,0);document.getElementById("cotArabicaSaldo").textContent=(arabicaSaldo>=0?"+":"")+numeroBR(arabicaSaldo,0);document.querySelector(".cot-data").textContent="Última informação: "+cot.data;}
-async function buscarDolar(){try{const url="https://economia.awesomeapi.com.br/json/last/USD-BRL";const resposta=await fetch(url,{cache:"no-store"});if(!resposta.ok)throw new Error("USD");const json=await resposta.json();if(json.USDBRL){const valor=Number(json.USDBRL.bid);const variacao=Number(json.USDBRL.pctChange);if(valor>=3&&valor<=10&&!isNaN(valor))dados.dolar.valor=valor;if(!isNaN(variacao))dados.dolar.variacao=variacao;}}catch(e){console.log("Falha dólar:",e);throw e;}}
-async function buscarInvesting(url){const proxies=["https://api.allorigins.win/raw?url="+encodeURIComponent(url),"https://corsproxy.io/?url="+encodeURIComponent(url)];for(const proxy of proxies){try{const resposta=await fetch(proxy,{cache:"no-store"});if(!resposta.ok)continue;const texto=await resposta.text();if(texto&&texto.length>1000)return texto;}catch(e){console.log("Proxy falhou:",e);}}return null;}
-function procurarCampo(texto,chaves){for(const chave of chaves){const regex=new RegExp('"'+chave+'"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)','i');const encontrado=texto.match(regex);if(encontrado){const valor=Number(encontrado[1]);if(!isNaN(valor))return valor;}}return null;}
-async function buscarRobusta(){const url="https://www.investing.com/commodities/london-coffee";const texto=await buscarInvesting(url);if(!texto)throw new Error("ROBUSTA");const valor=procurarCampo(texto,["last","lastPrice","last_price","instrument_last","currentPrice","price"]);const variacao=procurarCampo(texto,["changePercent","change_percentage","percentChange","changePct"]);if(valor!==null&&valor>=1500&&valor<=6000)dados.robusta.valor=valor;if(variacao!==null&&variacao>=-30&&variacao<=30)dados.robusta.variacao=variacao;}
-async function buscarArabica(){const url="https://www.investing.com/commodities/us-coffee-c";const texto=await buscarInvesting(url);if(!texto)throw new Error("ARABICA");const valor=procurarCampo(texto,["last","lastPrice","last_price","instrument_last","currentPrice","price"]);const variacao=procurarCampo(texto,["changePercent","change_percentage","percentChange","changePct"]);if(valor!==null&&valor>=100&&valor<=500)dados.arabica.valor=valor;if(variacao!==null&&variacao>=-30&&variacao<=30)dados.arabica.variacao=variacao;}
-async function atualizarCCCV(){const url="https://www.cccv.org.br/cotacao/";const proxies=["https://api.allorigins.win/raw?url="+encodeURIComponent(url),"https://corsproxy.io/?url="+encodeURIComponent(url)];for(const proxy of proxies){try{const resposta=await fetch(proxy,{cache:"no-store"});if(!resposta.ok)continue;const html=await resposta.text();if(!html||html.length<1000)continue;const texto=html.replace(/<script[\\s\\S]*?<\\/script>/gi," ").replace(/<style[\\s\\S]*?<\\/style>/gi," ").replace(/<[^>]+>/g," ").replace(/\\s+/g," ");const blocoConilon=texto.match(/Conilon\\s*7\\/8[\\s\\S]{0,300}/i);if(blocoConilon){const valores=blocoConilon[0].match(/R?\\$?\\s*[\\d.]+,\\d{2}/g);if(valores&&valores.length){const ultimo=valores[valores.length-1].replace(/\\./g,"").replace(",",".").replace("R$","").trim();const numero=Number(ultimo);if(numero>=500&&numero<=2000)dados.fisico.robusta=numero;}}const blocoArabica=texto.match(/Bebida\\s*Rio[\\s\\S]{0,300}/i);if(blocoArabica){const valores=blocoArabica[0].match(/R?\\$?\\s*[\\d.]+,\\d{2}/g);if(valores&&valores.length){const ultimo=valores[valores.length-1].replace(/\\./g,"").replace(",",".").replace("R$","").trim();const numero=Number(ultimo);if(numero>=500&&numero<=2500)dados.fisico.arabica=numero;}}const datas=texto.match(/\\b\\d{2}\\/\\d{2}\\/\\d{4}\\b/g);if(datas&&datas.length)dados.fisico.data=datas[0];atualizarFisico();atualizarRobusta();atualizarArabica();return true;}catch(e){console.log("Falha CCCV:",e);}}return false;}
-async function atualizarTudo(){document.getElementById("erro").style.display="none";let sucesso=false;try{const resultados=await Promise.allSettled([buscarDolar(),buscarRobusta(),buscarArabica()]);const quantidadeSucessos=resultados.filter(r=>r.status==="fulfilled").length;if(quantidadeSucessos>0)sucesso=true;}catch(e){console.log("Erro geral:",e);}atualizarDolar();atualizarRobusta();atualizarArabica();atualizarFisico();atualizarCOT();const cccvSucesso=await atualizarCCCV();if(cccvSucesso)sucesso=true;atualizarStatusConexao(sucesso);if(!sucesso)document.getElementById("erro").style.display="block";document.getElementById("status").textContent=sucesso?"Atualizado às "+new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}):"Sem atualização — última informação mantida";}
-atualizarStatusConexao(false);atualizarTudo();setInterval(atualizarTudo,10*60*1000);if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("./service-worker.js").catch(erro=>{console.log("Service Worker:",erro);});});}
-</script></body></html>
+
+/* =========================================================
+   STATUS DE CONEXÃO
+========================================================= */
+
+function atualizarStatusConexao(online){
+
+  const el=
+    document.getElementById(
+      "statusConexao"
+    );
+
+  if(!el)
+    return;
+
+  if(online){
+
+    el.className=
+      "conexao online";
+
+    el.innerHTML=
+      '<span class="conexao-ponto"></span> ONLINE';
+
+  }else{
+
+    el.className=
+      "conexao offline";
+
+    el.innerHTML=
+      '<span class="conexao-ponto"></span> OFFLINE';
+
+  }
+
+}
+
+
+/* =========================================================
+   DADOS
+========================================================= */
+
+let dados={
+
+  dolar:{
+    valor:null,
+    variacao:null
+  },
+
+  robusta:{
+    valor:null,
+    variacao:null,
+    contrato:null
+  },
+
+  arabica:{
+    valor:null,
+    variacao:null,
+    contrato:null
+  },
+
+  fisico:{
+    robusta:null,
+    arabica:null,
+    data:null
+  },
+
+  cot:{
+    data:null,
+
+    robusta:{
+      comprados:null,
+      vendidos:null
+    },
+
+    arabica:{
+      comprados:null,
+      vendidos:null
+    }
+
+  }
+
+};
+
+
+/* =========================================================
+   REFERÊNCIA DO DIFERENCIAL
+========================================================= */
+
+const referenciaMercado={
+
+  robusta:{
+    bolsa:3362,
+    dolar:5.1811,
+    fisico:908
+  },
+
+  arabica:{
+    bolsa:278.10,
+    dolar:5.1811,
+    fisico:1105
+  }
+
+};
+
+
+/* =========================================================
+   ÚLTIMO PREÇO ESTIMADO
+========================================================= */
+
+let ultimoEstimado={
+  robusta:null,
+  arabica:null
+};
+
+
+/* =========================================================
+   FORMATAÇÃO
+========================================================= */
+
+function numeroBR(valor,casas=2){
+
+  if(
+    valor===null ||
+    valor===undefined ||
+    isNaN(Number(valor))
+  )
+    return "INDISPONÍVEL";
+
+  return Number(valor).toLocaleString(
+    "pt-BR",
+    {
+      minimumFractionDigits:casas,
+      maximumFractionDigits:casas
+    }
+  );
+
+}
+
+
+function percentual(valor){
+
+  const n=Number(valor);
+
+  if(
+    valor===null ||
+    valor===undefined ||
+    isNaN(n)
+  )
+    return "INDISPONÍVEL";
+
+  return (n>=0?"▲ ":"▼ ")+
+         numeroBR(Math.abs(n),2)+
+         "%";
+
+}
+
+
+/* =========================================================
+   CORES DOS CARDS
+========================================================= */
+
+function aplicarCor(id,variacao){
+
+  const card=document.getElementById(id);
+
+  if(!card)
+    return;
+
+  card.classList.remove(
+    "verde",
+    "vermelho"
+  );
+
+  if(
+    variacao!==null &&
+    variacao!==undefined &&
+    !isNaN(Number(variacao))
+  ){
+
+    if(Number(variacao)>=0)
+      card.classList.add("verde");
+    else
+      card.classList.add("vermelho");
+
+  }else{
+
+    card.classList.add("verde");
+
+  }
+
+}
+
+
+/* =========================================================
+   COR DO FÍSICO ESTIMADO
+========================================================= */
+
+function aplicarCorEstimado(id,tendencia){
+
+  const box=document.getElementById(id);
+
+  if(!box)
+    return;
+
+  box.classList.remove(
+    "alta",
+    "baixa",
+    "estavel"
+  );
+
+  if(tendencia>0){
+
+    box.classList.add("alta");
+
+  }else if(tendencia<0){
+
+    box.classList.add("baixa");
+
+  }else{
+
+    box.classList.add("estavel");
+
+  }
+
+}
+
+
+/* =========================================================
+   DÓLAR
+========================================================= */
+
+function atualizarDolar(){
+
+  const valor=
+    document.getElementById(
+      "dolarValor"
+    );
+
+  const variacao=
+    document.getElementById(
+      "dolarVar"
+    );
+
+  if(
+    dados.dolar.valor===null ||
+    isNaN(Number(dados.dolar.valor))
+  ){
+
+    valor.textContent=
+      "INDISPONÍVEL";
+
+    variacao.textContent=
+      "INDISPONÍVEL";
+
+    valor.classList.add(
+      "indisponivel"
+    );
+
+    return;
+
+  }
+
+
+  valor.classList.remove(
+    "indisponivel"
+  );
+
+  valor.textContent=
+    "R$ "+
+    numeroBR(
+      dados.dolar.valor,
+      4
+    );
+
+  variacao.textContent=
+    percentual(
+      dados.dolar.variacao
+    );
+
+  aplicarCor(
+    "cardDolar",
+    dados.dolar.variacao
+  );
+
+}
+
+
+/* =========================================================
+   ROBUSTA
+========================================================= */
+
+function calcularRobusta(){
+
+  if(
+    dados.robusta.valor===null ||
+    dados.dolar.valor===null ||
+    dados.fisico.robusta===null
+  )
+    return null;
+
+
+  const usSaca=
+    Number(dados.robusta.valor)/
+    16.6666667;
+
+  const reais=
+    usSaca*
+    Number(dados.dolar.valor);
+
+  const refUsSaca=
+    Number(referenciaMercado.robusta.bolsa)/
+    16.6666667;
+
+  const refReais=
+    refUsSaca*
+    Number(referenciaMercado.robusta.dolar);
+
+  const basis=
+    Number(dados.fisico.robusta)-
+    refReais;
+
+  return reais+basis;
+
+}
+
+
+function atualizarRobusta(){
+
+  const valor=
+    document.getElementById(
+      "robustaValor"
+    );
+
+  const variacao=
+    document.getElementById(
+      "robustaVar"
+    );
+
+  const convertido=
+    document.getElementById(
+      "robustaConvertido"
+    );
+
+  const estimado=
+    document.getElementById(
+      "precoBrasilRobusta"
+    );
+
+
+  if(
+    dados.robusta.valor===null ||
+    isNaN(Number(dados.robusta.valor))
+  ){
+
+    valor.textContent=
+      "INDISPONÍVEL";
+
+    valor.classList.add(
+      "indisponivel"
+    );
+
+    variacao.textContent=
+      "INDISPONÍVEL";
+
+    convertido.textContent=
+      "INDISPONÍVEL";
+
+    estimado.textContent=
+      "INDISPONÍVEL";
+
+    estimado.classList.add(
+      "indisponivel"
+    );
+
+    document.getElementById(
+      "robustaContrato"
+    ).textContent=
+      "INDISPONÍVEL";
+
+    return;
+
+  }
+
+
+  valor.classList.remove(
+    "indisponivel"
+  );
+
+  estimado.classList.remove(
+    "indisponivel"
+  );
+
+
+  valor.textContent=
+    "US$ "+
+    numeroBR(
+      dados.robusta.valor,
+      0
+    );
+
+
+  variacao.textContent=
+    percentual(
+      dados.robusta.variacao
+    );
+
+
+  document.getElementById(
+    "robustaContrato"
+  ).textContent=
+    dados.robusta.contrato ||
+    "INDISPONÍVEL";
+
+
+  aplicarCor(
+    "cardRobusta",
+    dados.robusta.variacao
+  );
+
+
+  if(
+    dados.dolar.valor===null ||
+    isNaN(Number(dados.dolar.valor))
+  ){
+
+    convertido.textContent=
+      "INDISPONÍVEL";
+
+  }else{
+
+    const usSaca=
+      Number(dados.robusta.valor)/
+      16.6666667;
+
+    const reais=
+      usSaca*
+      Number(dados.dolar.valor);
+
+    convertido.textContent=
+      "R$ "+
+      numeroBR(
+        reais,
+        2
+      );
+
+  }
+
+
+  const preco=
+    calcularRobusta();
+
+
+  if(preco===null){
+
+    estimado.textContent=
+      "INDISPONÍVEL";
+
+    estimado.classList.add(
+      "indisponivel"
+    );
+
+    return;
+
+  }
+
+
+  const precoAnterior=
+    ultimoEstimado.robusta;
+
+  estimado.textContent=
+    "R$ "+
+    numeroBR(
+      preco,
+      2
+    );
+
+
+  let tendencia=0;
+
+
+  if(precoAnterior!==null){
+
+    if(preco>precoAnterior)
+      tendencia=1;
+
+    else if(preco<precoAnterior)
+      tendencia=-1;
+
+  }else{
+
+    tendencia=
+      Number(dados.robusta.variacao)>=0
+      ?1
+      :-1;
+
+  }
+
+
+  aplicarCorEstimado(
+    "boxRobusta",
+    tendencia
+  );
+
+
+  ultimoEstimado.robusta=preco;
+
+}
+
+
+/* =========================================================
+   ARÁBICA
+========================================================= */
+
+function calcularArabica(){
+
+  if(
+    dados.arabica.valor===null ||
+    dados.dolar.valor===null ||
+    dados.fisico.arabica===null
+  )
+    return null;
+
+
+  const usSaca=
+    (Number(dados.arabica.valor)/100)*
+    132.277357;
+
+  const reais=
+    usSaca*
+    Number(dados.dolar.valor);
+
+  const refUsSaca=
+    (Number(referenciaMercado.arabica.bolsa)/100)*
+    132.277357;
+
+  const refReais=
+    refUsSaca*
+    Number(referenciaMercado.arabica.dolar);
+
+  const basis=
+    Number(dados.fisico.arabica)-
+    refReais;
+
+  return reais+basis;
+
+}
+
+
+function atualizarArabica(){
+
+  const valor=
+    document.getElementById(
+      "arabicaValor"
+    );
+
+  const variacao=
+    document.getElementById(
+      "arabicaVar"
+    );
+
+  const convertido=
+    document.getElementById(
+      "arabicaConvertido"
+    );
+
+  const estimado=
+    document.getElementById(
+      "precoBrasilArabica"
+    );
+
+
+  if(
+    dados.arabica.valor===null ||
+    isNaN(Number(dados.arabica.valor))
+  ){
+
+    valor.textContent=
+      "INDISPONÍVEL";
+
+    valor.classList.add(
+      "indisponivel"
+    );
+
+    variacao.textContent=
+      "INDISPONÍVEL";
+
+    convertido.textContent=
+      "INDISPONÍVEL";
+
+    estimado.textContent=
+      "INDISPONÍVEL";
+
+    estimado.classList.add(
+      "indisponivel"
+    );
+
+    document.getElementById(
+      "arabicaContrato"
+    ).textContent=
+      "INDISPONÍVEL";
+
+    return;
+
+  }
+
+
+  valor.classList.remove(
+    "indisponivel"
+  );
+
+  estimado.classList.remove(
+    "indisponivel"
+  );
+
+
+  valor.textContent=
+    numeroBR(
+      dados.arabica.valor,
+      2
+    );
+
+
+  variacao.textContent=
+    percentual(
+      dados.arabica.variacao
+    );
+
+
+  document.getElementById(
+    "arabicaContrato"
+  ).textContent=
+    dados.arabica.contrato ||
+    "INDISPONÍVEL";
+
+
+  aplicarCor(
+    "cardArabica",
+    dados.arabica.variacao
+  );
+
+
+  if(
+    dados.dolar.valor===null ||
+    isNaN(Number(dados.dolar.valor))
+  ){
+
+    convertido.textContent=
+      "INDISPONÍVEL";
+
+  }else{
+
+    const usSaca=
+      (Number(dados.arabica.valor)/100)*
+      132.277357;
+
+    const reais=
+      usSaca*
+      Number(dados.dolar.valor);
+
+    convertido.textContent=
+      "R$ "+
+      numeroBR(
+        reais,
+        2
+      );
+
+  }
+
+
+  const preco=
+    calcularArabica();
+
+
+  if(preco===null){
+
+    estimado.textContent=
+      "INDISPONÍVEL";
+
+    estimado.classList.add(
+      "indisponivel"
+    );
+
+    return;
+
+  }
+
+
+  const precoAnterior=
+    ultimoEstimado.arabica;
+
+  estimado.textContent=
+    "R$ "+
+    numeroBR(
+      preco,
+      2
+    );
+
+
+  let tendencia=0;
+
+
+  if(precoAnterior!==null){
+
+    if(preco>precoAnterior)
+      tendencia=1;
+
+    else if(preco<precoAnterior)
+      tendencia=-1;
+
+  }else{
+
+    tendencia=
+      Number(dados.arabica.variacao)>=0
+      ?1
+      :-1;
+
+  }
+
+
+  aplicarCorEstimado(
+    "boxArabica",
+    tendencia
+  );
+
+
+  ultimoEstimado.arabica=preco;
+
+}
+
+
+/* =========================================================
+   FÍSICO
+========================================================= */
+
+function atualizarFisico(){
+
+  const fr=
+    document.getElementById(
+      "fisicoRobusta"
+    );
+
+  const fa=
+    document.getElementById(
+      "fisicoArabica"
+    );
+
+  const dr=
+    document.getElementById(
+      "dataFisicoRobusta"
+    );
+
+  const da=
+    document.getElementById(
+      "dataFisicoArabica"
+    );
+
+
+  if(
+    dados.fisico.robusta===null
+  ){
+
+    fr.textContent=
+      "INDISPONÍVEL";
+
+    fr.classList.add(
+      "indisponivel"
+    );
+
+  }else{
+
+    fr.classList.remove(
+      "indisponivel"
+    );
+
+    fr.textContent=
+      "R$ "+
+      numeroBR(
+        dados.fisico.robusta,
+        2
+      );
+
+  }
+
+
+  if(
+    dados.fisico.arabica===null
+  ){
+
+    fa.textContent=
+      "INDISPONÍVEL";
+
+    fa.classList.add(
+      "indisponivel"
+    );
+
+  }else{
+
+    fa.classList.remove(
+      "indisponivel"
+    );
+
+    fa.textContent=
+      "R$ "+
+      numeroBR(
+        dados.fisico.arabica,
+        2
+      );
+
+  }
+
+
+  dr.textContent=
+    dados.fisico.data ||
+    "INDISPONÍVEL";
+
+  da.textContent=
+    dados.fisico.data ||
+    "INDISPONÍVEL";
+
+
+  atualizarRobusta();
+  atualizarArabica();
+
+}
+
+
+/* =========================================================
+   COT
+========================================================= */
+
+function atualizarCOT(){
+
+  const cot=dados.cot;
+
+
+  const ids=[
+    "cotRobustaComprados",
+    "cotRobustaVendidos",
+    "cotRobustaSaldo",
+    "cotArabicaComprados",
+    "cotArabicaVendidos",
+    "cotArabicaSaldo"
+  ];
+
+
+  ids.forEach(id=>{
+
+    const el=
+      document.getElementById(id);
+
+    el.textContent=
+      "INDISPONÍVEL";
+
+    el.classList.add(
+      "indisponivel"
+    );
+
+  });
+
+
+  if(
+    cot.robusta.comprados!==null &&
+    cot.robusta.vendidos!==null
+  ){
+
+    const saldo=
+      cot.robusta.comprados-
+      cot.robusta.vendidos;
+
+
+    const comprados=
+      document.getElementById(
+        "cotRobustaComprados"
+      );
+
+    const vendidos=
+      document.getElementById(
+        "cotRobustaVendidos"
+      );
+
+    const saldoEl=
+      document.getElementById(
+        "cotRobustaSaldo"
+      );
+
+
+    comprados.classList.remove(
+      "indisponivel"
+    );
+
+    vendidos.classList.remove(
+      "indisponivel"
+    );
+
+    saldoEl.classList.remove(
+      "indisponivel"
+    );
+
+
+    comprados.textContent=
+      numeroBR(
+        cot.robusta.comprados,
+        0
+      );
+
+    vendidos.textContent=
+      numeroBR(
+        cot.robusta.vendidos,
+        0
+      );
+
+    saldoEl.textContent=
+      (saldo>=0?"+":"")+
+      numeroBR(
+        saldo,
+        0
+      );
+
+  }
+
+
+  if(
+    cot.arabica.comprados!==null &&
+    cot.arabica.vendidos!==null
+  ){
+
+    const saldo=
+      cot.arabica.comprados-
+      cot.arabica.vendidos;
+
+
+    const comprados=
+      document.getElementById(
+        "cotArabicaComprados"
+      );
+
+    const vendidos=
+      document.getElementById(
+        "cotArabicaVendidos"
+      );
+
+    const saldoEl=
+      document.getElementById(
+        "cotArabicaSaldo"
+      );
+
+
+    comprados.classList.remove(
+      "indisponivel"
+    );
+
+    vendidos.classList.remove(
+      "indisponivel"
+    );
+
+    saldoEl.classList.remove(
+      "indisponivel"
+    );
+
+
+    comprados.textContent=
+      numeroBR(
+        cot.arabica.comprados,
+        0
+      );
+
+    vendidos.textContent=
+      numeroBR(
+        cot.arabica.vendidos,
+        0
+      );
+
+    saldoEl.textContent=
+      (saldo>=0?"+":"")+
+      numeroBR(
+        saldo,
+        0
+      );
+
+  }
+
+
+  document.getElementById(
+    "cotData"
+  ).textContent=
+    cot.data
+    ? "Última informação: "+
+      cot.data
+    : "Última informação: INDISPONÍVEL";
+
+}
+
+
+/* =========================================================
+   DÓLAR API
+========================================================= */
+
+async function buscarDolar(){
+
+  try{
+
+    const url=
+      "https://economia.awesomeapi.com.br/json/last/USD-BRL";
+
+
+    const resposta=
+      await fetch(
+        url+
+        "?_="+
+        Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!resposta.ok)
+      throw new Error("USD");
+
+
+    const json=
+      await resposta.json();
+
+
+    if(json.USDBRL){
+
+      const valor=
+        Number(
+          json.USDBRL.bid
+        );
+
+      const variacao=
+        Number(
+          json.USDBRL.pctChange
+        );
+
+
+      if(
+        valor>=3 &&
+        valor<=10 &&
+        !isNaN(valor)
+      ){
+
+        dados.dolar.valor=
+          valor;
+
+      }else{
+
+        throw new Error("USD VALOR");
+
+      }
+
+
+      if(!isNaN(variacao)){
+
+        dados.dolar.variacao=
+          variacao;
+
+      }else{
+
+        dados.dolar.variacao=null;
+
+      }
+
+    }else{
+
+      throw new Error("USD");
+
+    }
+
+  }catch(e){
+
+    console.log(
+      "Falha dólar:",
+      e
+    );
+
+    dados.dolar.valor=null;
+    dados.dolar.variacao=null;
+
+    throw e;
+
+  }
+
+}
+
+
+/* =========================================================
+   INVESTING
+========================================================= */
+
+async function buscarInvesting(url){
+
+  const proxies=[
+
+    "https://api.allorigins.win/raw?url="+
+    encodeURIComponent(url),
+
+    "https://corsproxy.io/?url="+
+    encodeURIComponent(url)
+
+  ];
+
+
+  for(const proxy of proxies){
+
+    try{
+
+      const resposta=
+        await fetch(
+          proxy+
+          (
+            proxy.includes("?")
+            ? "&_="
+            : "?_="
+          )+
+          Date.now(),
+          {
+            cache:"no-store"
+          }
+        );
+
+
+      if(!resposta.ok)
+        continue;
+
+
+      const texto=
+        await resposta.text();
+
+
+      if(
+        texto &&
+        texto.length>1000
+      )
+        return texto;
+
+    }catch(e){
+
+      console.log(
+        "Proxy falhou:",
+        e
+      );
+
+    }
+
+  }
+
+  return null;
+
+}
+
+
+/* =========================================================
+   PROCURAR CAMPO
+========================================================= */
+
+function procurarCampo(texto,chaves){
+
+  for(const chave of chaves){
+
+    const regex=
+      new RegExp(
+        '"'+chave+
+        '"\\s*:\\s*(-?\\d+(?:\\.\\d+)?)',
+        "i"
+      );
+
+
+    const encontrado=
+      texto.match(regex);
+
+
+    if(encontrado){
+
+      const valor=
+        Number(
+          encontrado[1]
+        );
+
+
+      if(!isNaN(valor))
+        return valor;
+
+    }
+
+  }
+
+  return null;
+
+}
+
+
+/* =========================================================
+   LIMPAR HTML
+========================================================= */
+
+function limparTextoHTML(html){
+
+  return html
+    .replace(
+      /<script[\s\S]*?<\/script>/gi,
+      " "
+    )
+    .replace(
+      /<style[\s\S]*?<\/style>/gi,
+      " "
+    )
+    .replace(
+      /<[^>]+>/g,
+      " "
+    )
+    .replace(
+      /&nbsp;/gi,
+      " "
+    )
+    .replace(
+      /&amp;/gi,
+      "&"
+    )
+    .replace(
+      /\s+/g,
+      " "
+    )
+    .trim();
+
+}
+
+
+/* =========================================================
+   IDENTIFICAR CONTRATO
+========================================================= */
+
+/*
+ * IMPORTANTE:
+ *
+ * Não procura mais qualquer combinação mês/ano
+ * espalhada pela página.
+ *
+ * Primeiro procura o campo "Month/Mês" do
+ * instrumento principal.
+ *
+ * Isso evita erros como MAI/30.
+ */
+
+function identificarContrato(texto,tipo){
+
+  if(!texto)
+    return null;
+
+
+  const textoLimpo=
+    limparTextoHTML(texto);
+
+
+  const textoMaiusculo=
+    textoLimpo.toUpperCase();
+
+
+  /*
+   * ROBUSTA
+   *
+   * Exemplo real:
+   *
+   * London Coffee Futures - Nov 26 (RCX6)
+   *
+   */
+
+  if(tipo==="robusta"){
+
+    const padroes=[
+
+      /LONDON\s+COFFEE\s+FUTURES\s*-\s*(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s*['’]?\s*(\d{2,4})/i,
+
+      /CAF[EÉ]\s+ROBUSTA\s+LONDRES\s+FUTUROS\s*-\s*(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s*['’]?\s*(\d{2,4})/i
+
+    ];
+
+
+    for(const regex of padroes){
+
+      const m=
+        textoMaiusculo.match(regex);
+
+      if(m){
+
+        let ano=m[2];
+
+        if(ano.length===4)
+          ano=ano.slice(-2);
+
+        const mapa={
+          JAN:"JAN",
+          FEB:"FEV",
+          MAR:"MAR",
+          APR:"ABR",
+          MAY:"MAI",
+          JUN:"JUN",
+          JUL:"JUL",
+          AUG:"AGO",
+          SEP:"SET",
+          OCT:"OUT",
+          NOV:"NOV",
+          DEC:"DEZ"
+        };
+
+        return mapa[m[1]]+
+               "/"+
+               ano;
+
+      }
+
+    }
+
+
+    /*
+     * Fallback específico para:
+     * Month Nov 26
+     *
+     * Só aceita se estiver no começo
+     * do conteúdo do instrumento.
+     */
+
+    const month=
+      textoMaiusculo.match(
+        /\bMONTH\s+(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s*['’]?\s*(\d{2,4})/
+      );
+
+
+    if(month){
+
+      let ano=month[2];
+
+      if(ano.length===4)
+        ano=ano.slice(-2);
+
+      const mapa={
+        JAN:"JAN",
+        FEB:"FEV",
+        MAR:"MAR",
+        APR:"ABR",
+        MAY:"MAI",
+        JUN:"JUN",
+        JUL:"JUL",
+        AUG:"AGO",
+        SEP:"SET",
+        OCT:"OUT",
+        NOV:"NOV",
+        DEC:"DEZ"
+      };
+
+      return mapa[month[1]]+
+             "/"+
+             ano;
+
+    }
+
+  }
+
+
+  /*
+   * ARÁBICA
+   *
+   * Exemplo real:
+   *
+   * US Coffee C (KCZ6)
+   *
+   * Month Dec 26
+   */
+
+  if(tipo==="arabica"){
+
+    const padroes=[
+
+      /US\s+COFFEE\s+C\s*\([A-Z0-9]+\)[\s\S]{0,800}?\bMONTH\s+(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s*['’]?\s*(\d{2,4})/i,
+
+      /CAF[EÉ]\s+CONTRATO\s+C[\s\S]{0,800}?\bM[ÊE]S\s+(JAN|FEV|MAR|ABR|MAI|JUN|JUL|AGO|SET|OUT|NOV|DEZ)\s*['’]?\s*(\d{2,4})/i
+
+    ];
+
+
+    for(const regex of padroes){
+
+      const m=
+        textoMaiusculo.match(regex);
+
+      if(m){
+
+        let ano=m[2];
+
+        if(ano.length===4)
+          ano=ano.slice(-2);
+
+        const mapa={
+          JAN:"JAN",
+          FEB:"FEV",
+          MAR:"MAR",
+          APR:"ABR",
+          MAY:"MAI",
+          JUN:"JUN",
+          JUL:"JUL",
+          AUG:"AGO",
+          SEP:"SET",
+          OCT:"OUT",
+          NOV:"NOV",
+          DEC:"DEZ",
+
+          FEV:"FEV",
+          ABR:"ABR",
+          MAI:"MAI",
+          AGO:"AGO",
+          SET:"SET",
+          OUT:"OUT",
+          DEZ:"DEZ"
+        };
+
+        return mapa[m[1]]+
+               "/"+
+               ano;
+
+      }
+
+    }
+
+
+    const month=
+      textoMaiusculo.match(
+        /\bMONTH\s+(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)\s*['’]?\s*(\d{2,4})/
+      );
+
+
+    if(month){
+
+      let ano=month[2];
+
+      if(ano.length===4)
+        ano=ano.slice(-2);
+
+      const mapa={
+        JAN:"JAN",
+        FEB:"FEV",
+        MAR:"MAR",
+        APR:"ABR",
+        MAY:"MAI",
+        JUN:"JUN",
+        JUL:"JUL",
+        AUG:"AGO",
+        SEP:"SET",
+        OCT:"OUT",
+        NOV:"NOV",
+        DEC:"DEZ"
+      };
+
+      return mapa[month[1]]+
+             "/"+
+             ano;
+
+    }
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =========================================================
+   IDENTIFICAR PERCENTUAL PRINCIPAL
+========================================================= */
+
+/*
+ * Não usa mais "changePercent" genérico.
+ *
+ * Primeiro procura o percentual que aparece
+ * junto da cotação principal da página.
+ *
+ * Se não conseguir identificar com segurança,
+ * retorna null.
+ */
+
+function identificarPercentual(texto,tipo){
+
+  if(!texto)
+    return null;
+
+
+  const textoLimpo=
+    limparTextoHTML(texto);
+
+
+  /*
+   * ROBUSTA
+   */
+
+  if(tipo==="robusta"){
+
+    const padroes=[
+
+      /*
+       * Exemplo:
+       * 3,362.00 +78.00(+2.38%)
+       */
+
+      /LONDON\s+COFFEE[\s\S]{0,1200}?\b[-+]?\d[\d,.]*\s*[-+]\d[\d,.]*\s*\(\s*([-+]?\d+(?:[.,]\d+)?)%\s*\)/i,
+
+      /*
+       * Exemplo:
+       * 3,362.00 +78.00 +2.38%
+       */
+
+      /LONDON\s+COFFEE[\s\S]{0,1200}?\b[-+]?\d[\d,.]*\s*[-+]\d[\d,.]*\s+([-+]?\d+(?:[.,]\d+)?)%/i
+
+    ];
+
+
+    for(const regex of padroes){
+
+      const m=
+        textoLimpo.match(regex);
+
+      if(m){
+
+        const n=
+          Number(
+            m[1].replace(",",".")
+          );
+
+        if(
+          !isNaN(n) &&
+          n>=-30 &&
+          n<=30
+        )
+          return n;
+
+      }
+
+    }
+
+  }
+
+
+  /*
+   * ARÁBICA
+   */
+
+  if(tipo==="arabica"){
+
+    const padroes=[
+
+      /*
+       * Exemplo:
+       * US Coffee C
+       * 278.10 +2.75(+1.00%)
+       */
+
+      /US\s+COFFEE\s+C[\s\S]{0,1200}?\b[-+]?\d[\d,.]*\s*[-+]\d[\d,.]*\s*\(\s*([-+]?\d+(?:[.,]\d+)?)%\s*\)/i,
+
+      /*
+       * Exemplo:
+       * 278.10 +2.75 +1.00%
+       */
+
+      /US\s+COFFEE\s+C[\s\S]{0,1200}?\b[-+]?\d[\d,.]*\s*[-+]\d[\d,.]*\s+([-+]?\d+(?:[.,]\d+)?)%/i,
+
+      /*
+       * Versão em português.
+       */
+
+      /CAF[EÉ]\s+CONTRATO\s+C[\s\S]{0,1200}?\b[-+]?\d[\d,.]*\s*[-+]\d[\d,.]*\s*\(\s*([-+]?\d+(?:[.,]\d+)?)%\s*\)/i
+
+    ];
+
+
+    for(const regex of padroes){
+
+      const m=
+        textoLimpo.match(regex);
+
+      if(m){
+
+        const n=
+          Number(
+            m[1].replace(",",".")
+          );
+
+        if(
+          !isNaN(n) &&
+          n>=-30 &&
+          n<=30
+        )
+          return n;
+
+      }
+
+    }
+
+  }
+
+
+  /*
+   * Não conseguiu identificar com segurança.
+   */
+
+  return null;
+
+}
+
+
+/* =========================================================
+   ROBUSTA
+========================================================= */
+
+async function buscarRobusta(){
+
+  const url=
+    "https://www.investing.com/commodities/london-coffee";
+
+
+  const texto=
+    await buscarInvesting(url);
+
+
+  if(!texto)
+    throw new Error("ROBUSTA");
+
+
+  const valor=
+    procurarCampo(
+      texto,
+      [
+        "last",
+        "lastPrice",
+        "last_price",
+        "instrument_last",
+        "currentPrice",
+        "price"
+      ]
+    );
+
+
+  if(
+    valor!==null &&
+    valor>=1500 &&
+    valor<=6000
+  ){
+
+    dados.robusta.valor=
+      valor;
+
+  }else{
+
+    throw new Error("ROBUSTA VALOR");
+
+  }
+
+
+  /*
+   * Percentual agora é identificado
+   * separadamente e com validação.
+   */
+
+  dados.robusta.variacao=
+    identificarPercentual(
+      texto,
+      "robusta"
+    );
+
+
+  /*
+   * Contrato.
+   */
+
+  dados.robusta.contrato=
+    identificarContrato(
+      texto,
+      "robusta"
+    ) ||
+    "INDISPONÍVEL";
+
+}
+
+
+/* =========================================================
+   ARÁBICA
+========================================================= */
+
+async function buscarArabica(){
+
+  const url=
+    "https://www.investing.com/commodities/us-coffee-c";
+
+
+  const texto=
+    await buscarInvesting(url);
+
+
+  if(!texto)
+    throw new Error("ARABICA");
+
+
+  const valor=
+    procurarCampo(
+      texto,
+      [
+        "last",
+        "lastPrice",
+        "last_price",
+        "instrument_last",
+        "currentPrice",
+        "price"
+      ]
+    );
+
+
+  if(
+    valor!==null &&
+    valor>=100 &&
+    valor<=500
+  ){
+
+    dados.arabica.valor=
+      valor;
+
+  }else{
+
+    throw new Error("ARABICA VALOR");
+
+  }
+
+
+  /*
+   * Percentual separado do Robusta.
+   */
+
+  dados.arabica.variacao=
+    identificarPercentual(
+      texto,
+      "arabica"
+    );
+
+
+  /*
+   * Contrato.
+   */
+
+  dados.arabica.contrato=
+    identificarContrato(
+      texto,
+      "arabica"
+    ) ||
+    "INDISPONÍVEL";
+
+}
+
+
+/* =========================================================
+   CCCV
+========================================================= */
+
+async function atualizarCCCV(){
+
+  const url=
+    "https://www.cccv.org.br/cotacao/";
+
+
+  const proxies=[
+
+    "https://api.allorigins.win/raw?url="+
+    encodeURIComponent(url),
+
+    "https://corsproxy.io/?url="+
+    encodeURIComponent(url)
+
+  ];
+
+
+  let sucesso=false;
+
+
+  for(const proxy of proxies){
+
+    try{
+
+      const resposta=
+        await fetch(
+          proxy+
+          (
+            proxy.includes("?")
+            ? "&_="
+            : "?_="
+          )+
+          Date.now(),
+          {
+            cache:"no-store"
+          }
+        );
+
+
+      if(!resposta.ok)
+        continue;
+
+
+      const html=
+        await resposta.text();
+
+
+      if(
+        !html ||
+        html.length<1000
+      )
+        continue;
+
+
+      const parser=
+        new DOMParser();
+
+
+      const doc=
+        parser.parseFromString(
+          html,
+          "text/html"
+        );
+
+
+      const tabelas=
+        Array.from(
+          doc.querySelectorAll("table")
+        );
+
+
+      let melhorDia=-1;
+      let ultimoRobusta=null;
+      let ultimoArabica=null;
+
+
+      for(const tabela of tabelas){
+
+        const linhas=
+          Array.from(
+            tabela.querySelectorAll("tr")
+          );
+
+
+        for(const linha of linhas){
+
+          const celulas=
+            Array.from(
+              linha.querySelectorAll("th,td")
+            );
+
+
+          if(celulas.length<4)
+            continue;
+
+
+          const textos=
+            celulas.map(
+              c=>
+                c.textContent
+                  .replace(/\s+/g," ")
+                  .trim()
+            );
+
+
+          const dia=
+            parseInt(
+              textos[0],
+              10
+            );
+
+
+          if(
+            isNaN(dia) ||
+            dia<1 ||
+            dia>31
+          )
+            continue;
+
+
+          function valorCelula(texto){
+
+            const m=
+              texto.match(
+                /(\d{1,3}(?:\.\d{3})*,\d{2})/
+              );
+
+
+            if(!m)
+              return null;
+
+
+            return Number(
+              m[1]
+                .replace(/\./g,"")
+                .replace(",",".")
+            );
+
+          }
+
+
+          const rio=
+            valorCelula(
+              textos[2]
+            );
+
+
+          const conilon=
+            valorCelula(
+              textos[3]
+            );
+
+
+          if(
+            conilon!==null &&
+            conilon>=500 &&
+            conilon<=2000 &&
+            dia>=melhorDia
+          ){
+
+            melhorDia=
+              dia;
+
+            ultimoRobusta=
+              conilon;
+
+            ultimoArabica=
+              rio;
+
+          }
+
+        }
+
+      }
+
+
+      if(
+        melhorDia>=1 &&
+        ultimoRobusta!==null
+      ){
+
+        dados.fisico.robusta=
+          ultimoRobusta;
+
+        dados.fisico.arabica=
+          ultimoArabica;
+
+        dados.fisico.data=
+          String(melhorDia)
+            .padStart(2,"0")+
+          "/09/2026";
+
+        sucesso=true;
+
+      }
+
+
+      if(!sucesso){
+
+        const texto=
+          html
+            .replace(
+              /<script[\s\S]*?<\/script>/gi,
+              " "
+            )
+            .replace(
+              /<style[\s\S]*?<\/style>/gi,
+              " "
+            )
+            .replace(
+              /<[^>]+>/g,
+              " "
+            )
+            .replace(
+              /&nbsp;/gi,
+              " "
+            )
+            .replace(
+              /\s+/g,
+              " "
+            );
+
+
+        const linhasTexto=
+          texto.match(
+            /\b(\d{1,2})\s+[\d.]+,\d{2}\s+[\d.]+,\d{2}\s+[\d.]+,\d{2}/g
+          );
+
+
+        if(linhasTexto){
+
+          let melhor=null;
+
+
+          for(
+            const linha of linhasTexto
+          ){
+
+            const m=
+              linha.match(
+                /^(\d{1,2})\s+([\d.]+,\d{2})\s+([\d.]+,\d{2})\s+([\d.]+,\d{2})/
+              );
+
+
+            if(!m)
+              continue;
+
+
+            const dia=
+              Number(m[1]);
+
+
+            const conilon=
+              Number(
+                m[4]
+                  .replace(/\./g,"")
+                  .replace(",",".")
+              );
+
+
+            if(
+              conilon>=500 &&
+              conilon<=2000 &&
+              (!melhor || dia>melhor.dia)
+            ){
+
+              melhor={
+                dia,
+                conilon
+              };
+
+            }
+
+          }
+
+
+          if(melhor){
+
+            dados.fisico.robusta=
+              melhor.conilon;
+
+            dados.fisico.arabica=
+              null;
+
+            dados.fisico.data=
+              String(melhor.dia)
+                .padStart(2,"0")+
+              "/09/2026";
+
+            sucesso=true;
+
+          }
+
+        }
+
+      }
+
+
+      if(sucesso){
+
+        atualizarFisico();
+
+        return true;
+
+      }
+
+    }catch(e){
+
+      console.log(
+        "Falha CCCV:",
+        e
+      );
+
+    }
+
+  }
+
+
+  dados.fisico.robusta=null;
+  dados.fisico.arabica=null;
+  dados.fisico.data=null;
+
+  atualizarFisico();
+
+  return false;
+
+}
+
+
+/* =========================================================
+   COT — CFTC
+========================================================= */
+
+async function atualizarCOTFonte(){
+
+  const url=
+    "https://www.cftc.gov/dea/futures/deanybtsf.htm";
+
+
+  const proxies=[
+
+    "https://api.allorigins.win/raw?url="+
+    encodeURIComponent(url),
+
+    "https://corsproxy.io/?url="+
+    encodeURIComponent(url)
+
+  ];
+
+
+  for(const proxy of proxies){
+
+    try{
+
+      const resposta=
+        await fetch(
+          proxy+
+          (
+            proxy.includes("?")
+            ? "&_="
+            : "?_="
+          )+
+          Date.now(),
+          {
+            cache:"no-store"
+          }
+        );
+
+
+      if(!resposta.ok)
+        continue;
+
+
+      const html=
+        await resposta.text();
+
+
+      if(
+        !html ||
+        html.length<1000
+      )
+        continue;
+
+
+      const texto=
+        html
+          .replace(
+            /<script[\s\S]*?<\/script>/gi,
+            " "
+          )
+          .replace(
+            /<style[\s\S]*?<\/style>/gi,
+            " "
+          )
+          .replace(
+            /<[^>]+>/g,
+            " "
+          )
+          .replace(
+            /&nbsp;/gi,
+            " "
+          )
+          .replace(
+            /\s+/g,
+            " "
+          );
+
+
+      const inicio=
+        texto.search(
+          /COFFEE\s+C\s*-\s*ICE\s+FUTURES\s+U\.S\./i
+        );
+
+
+      if(inicio<0)
+        continue;
+
+
+      const bloco=
+        texto.substring(
+          inicio,
+          inicio+8000
+        );
+
+
+      const managedPos=
+        bloco.search(
+          /MANAGED\s+MONEY/i
+        );
+
+
+      if(managedPos<0)
+        continue;
+
+
+      const parte=
+        bloco.substring(
+          managedPos,
+          managedPos+2500
+        );
+
+
+      const numeros=
+        parte.match(
+          /\b\d[\d,]{2,}\b/g
+        );
+
+
+      if(!numeros || numeros.length<2)
+        continue;
+
+
+      const candidatos=
+        numeros.map(
+          n=>Number(
+            n.replace(/,/g,"")
+          )
+        );
+
+
+      let comprados=null;
+      let vendidos=null;
+
+
+      for(let i=0;i<candidatos.length-1;i++){
+
+        const a=candidatos[i];
+        const b=candidatos[i+1];
+
+
+        if(
+          a>=1000 &&
+          a<=100000 &&
+          b>=1000 &&
+          b<=100000
+        ){
+
+          comprados=a;
+          vendidos=b;
+          break;
+
+        }
+
+      }
+
+
+      if(
+        comprados===null ||
+        vendidos===null
+      )
+        continue;
+
+
+      const dataMatch=
+        bloco.match(
+          /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/
+        );
+
+
+      let data=null;
+
+
+      if(dataMatch){
+
+        let ano=dataMatch[3];
+
+        if(ano.length===2)
+          ano="20"+ano;
+
+        data=
+          dataMatch[2].padStart(2,"0")+
+          "/"+
+          dataMatch[1].padStart(2,"0")+
+          "/"+
+          ano;
+
+      }
+
+
+      dados.cot.robusta.comprados=null;
+      dados.cot.robusta.vendidos=null;
+
+      dados.cot.arabica.comprados=null;
+      dados.cot.arabica.vendidos=null;
+
+      dados.cot.data=data;
+
+
+      atualizarCOT();
+
+      return true;
+
+    }catch(e){
+
+      console.log(
+        "Falha COT:",
+        e
+      );
+
+    }
+
+  }
+
+
+  dados.cot.data=null;
+
+  dados.cot.robusta.comprados=null;
+  dados.cot.robusta.vendidos=null;
+
+  dados.cot.arabica.comprados=null;
+  dados.cot.arabica.vendidos=null;
+
+  atualizarCOT();
+
+  return false;
+
+}
+
+
+/* =========================================================
+   ATUALIZAÇÃO MANUAL
+========================================================= */
+
+async function atualizarManual(){
+
+  const botao=
+    document.getElementById(
+      "btnAtualizar"
+    );
+
+
+  if(
+    botao.classList.contains(
+      "carregando"
+    )
+  )
+    return;
+
+
+  botao.classList.add(
+    "carregando"
+  );
+
+  botao.textContent=
+    "↻ ATUALIZANDO...";
+
+
+  await atualizarTudo();
+
+
+  botao.classList.remove(
+    "carregando"
+  );
+
+  botao.textContent=
+    "↻ ATUALIZAR";
+
+}
+
+
+/* =========================================================
+   ATUALIZAÇÃO GERAL
+========================================================= */
+
+let atualizando=false;
+
+
+async function atualizarTudo(){
+
+  if(atualizando)
+    return;
+
+
+  atualizando=true;
+
+
+  document.getElementById(
+    "erro"
+  ).style.display=
+    "none";
+
+
+  const botao=
+    document.getElementById(
+      "btnAtualizar"
+    );
+
+
+  if(
+    !botao.classList.contains(
+      "carregando"
+    )
+  ){
+
+    botao.classList.add(
+      "carregando"
+    );
+
+    botao.textContent=
+      "↻ ATUALIZANDO...";
+
+  }
+
+
+  let fontesOK=0;
+  let fontesFalharam=0;
+
+
+  const resultados=
+    await Promise.allSettled([
+
+      buscarDolar(),
+
+      buscarRobusta(),
+
+      buscarArabica(),
+
+      atualizarCCCV(),
+
+      atualizarCOTFonte()
+
+    ]);
+
+
+  if(
+    resultados[0].status==="fulfilled"
+  ){
+
+    fontesOK++;
+
+  }else{
+
+    fontesFalharam++;
+
+  }
+
+
+  if(
+    resultados[1].status==="fulfilled"
+  ){
+
+    fontesOK++;
+
+  }else{
+
+    dados.robusta.valor=null;
+    dados.robusta.variacao=null;
+    dados.robusta.contrato=null;
+
+    fontesFalharam++;
+
+  }
+
+
+  if(
+    resultados[2].status==="fulfilled"
+  ){
+
+    fontesOK++;
+
+  }else{
+
+    dados.arabica.valor=null;
+    dados.arabica.variacao=null;
+    dados.arabica.contrato=null;
+
+    fontesFalharam++;
+
+  }
+
+
+  if(
+    resultados[3].status==="fulfilled" &&
+    resultados[3].value===true
+  ){
+
+    fontesOK++;
+
+  }else{
+
+    fontesFalharam++;
+
+  }
+
+
+  if(
+    resultados[4].status==="fulfilled" &&
+    resultados[4].value===true
+  ){
+
+    fontesOK++;
+
+  }else{
+
+    fontesFalharam++;
+
+  }
+
+
+  atualizarDolar();
+
+  atualizarFisico();
+
+  atualizarRobusta();
+
+  atualizarArabica();
+
+  atualizarCOT();
+
+
+  atualizarStatusConexao(
+    fontesOK>0
+  );
+
+
+  if(fontesFalharam>0){
+
+    document.getElementById(
+      "erro"
+    ).style.display=
+      "block";
+
+  }
+
+
+  const agora=
+    new Date();
+
+
+  const data=
+    agora.toLocaleDateString(
+      "pt-BR"
+    );
+
+
+  const horario=
+    agora.toLocaleTimeString(
+      "pt-BR",
+      {
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit"
+      }
+    );
+
+
+  document.getElementById(
+    "status"
+  ).textContent=
+    fontesFalharam===0
+
+    ? "✓ Tudo atualizado em "+
+      data+
+      " às "+
+      horario
+
+    : "✓ Atualizado em "+
+      data+
+      " às "+
+      horario+
+      " • Algumas fontes indisponíveis";
+
+
+  botao.classList.remove(
+    "carregando"
+  );
+
+  botao.textContent=
+    "↻ ATUALIZAR";
+
+
+  atualizando=false;
+
+}
+
+
+/* =========================================================
+   PRIMEIRA ATUALIZAÇÃO
+========================================================= */
+
+atualizarStatusConexao(false);
+
+
+window.addEventListener(
+  "load",
+  function(){
+
+    setTimeout(
+      atualizarTudo,
+      250
+    );
+
+  }
+);
+
+
+/* =========================================================
+   ATUALIZAÇÃO AUTOMÁTICA
+   TODAS AS FONTES — 5 MINUTOS
+========================================================= */
+
+setInterval(
+  atualizarTudo,
+  5*60*1000
+);
+
+
+/* =========================================================
+   SERVICE WORKER
+========================================================= */
+
+if(
+  "serviceWorker" in navigator
+){
+
+  window.addEventListener(
+    "load",
+    ()=>{
+
+      navigator.serviceWorker
+        .register("./service-worker.js")
+        .catch(
+          erro=>{
+            console.log(
+              "Service Worker:",
+              erro
+            );
+          }
+        );
+
+    }
+  );
+
+}
+
+</script>
+
+</body>
+</html>
